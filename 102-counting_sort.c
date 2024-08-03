@@ -38,6 +38,8 @@ void counting_sort(int *array, size_t size)
 	count = malloc((max + 1) * sizeof(int));
 	if (!count)
 		return;
+	for (i = 0; i <= (size_t)max; i++)
+		count[i] = 0;
 	for (i = 0; i < size; i++)
 		count[array[i]]++;
 	printf("Counting array: ");
@@ -48,7 +50,6 @@ void counting_sort(int *array, size_t size)
 			printf(", ");
 	}
 	printf("\n");
-
 	for (i = 1; i <= (size_t)max; i++)
 		count[i] += count[i - 1];
 	output = malloc(size * sizeof(int));
