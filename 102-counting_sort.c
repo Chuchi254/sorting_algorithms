@@ -29,7 +29,7 @@ int find_max(int *array, size_t size)
  */
 void counting_sort(int *array, size_t size)
 {
-	int *count, *output, max;
+	int *count, *output, max, j;
 	size_t i;
 
 	if (!array || size < 2)
@@ -42,12 +42,14 @@ void counting_sort(int *array, size_t size)
 		count[i] = 0;
 	for (i = 0; i < size; i++)
 		count[array[i]]++;
-	printf("Counting array: ");
 	for (i = 0; i <= (size_t)max; i++)
 	{
-		printf("%d", count[i]);
-		if (i < (size_t)max)
-			printf(", ");
+		for (j = 0; j < count[i]; j++)
+		{
+			printf("%ld", i);
+			if (i < (size_t)max || j < count[i] - 1)
+				printf(", ");
+		}
 	}
 	printf("\n");
 	for (i = 1; i <= (size_t)max; i++)
